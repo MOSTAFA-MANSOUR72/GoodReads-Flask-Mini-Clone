@@ -1,0 +1,110 @@
+{% extends 'home.html' %}
+{% block title %} Edit Book - BookTracker {% endblock %}
+
+{% block container %}
+<div class="max-w-2xl mx-auto">
+  <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+    <div class="bg-gradient-to-r from-amber-500 to-orange-500 px-6 py-4">
+      <h1 class="text-2xl font-bold text-white flex items-center">
+        <i class="fas fa-edit mr-3"></i>
+        Edit Book
+      </h1>
+    </div>
+    
+    <div class="p-6">
+      <form class="space-y-6" method="post" enctype="multipart/form-data">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div>
+            <label for="title" class="block text-sm font-medium text-gray-700">Book Title</label>
+            <input 
+              type="text" 
+              id="title" 
+              name="title" 
+              required 
+              value="{{ book.title }}"
+              class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary-500 focus:border-primary-500 transition-colors"
+              placeholder="Enter book title"
+            >
+          </div>
+          
+          <div>
+            <label for="author" class="block text-sm font-medium text-gray-700">Author</label>
+            <input 
+              type="text" 
+              id="author" 
+              name="author" 
+              required 
+              value="{{ book.author }}"
+              class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary-500 focus:border-primary-500 transition-colors"
+              placeholder="Enter author name"
+            >
+          </div>
+        </div>
+        
+        <div>
+          <label for="description" class="block text-sm font-medium text-gray-700">Description</label>
+          <textarea 
+            id="description" 
+            name="description" 
+            rows="4" 
+            required 
+            class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary-500 focus:border-primary-500 transition-colors"
+            placeholder="Enter book description"
+          >{{ book.description }}</textarea>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div>
+            <label for="pages_number" class="block text-sm font-medium text-gray-700">Number of Pages</label>
+            <input 
+              type="number" 
+              id="pages_number" 
+              name="pages_number" 
+              required 
+              min="1"
+              value="{{ book.pages_number }}"
+              class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary-500 focus:border-primary-500 transition-colors"
+              placeholder="Enter page count"
+            >
+          </div>
+          
+          <div>
+            <label for="cover_image" class="block text-sm font-medium text-gray-700">Cover Image (Optional)</label>
+            <div class="mt-1">
+              <label class="w-full flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md cursor-pointer hover:bg-gray-50 transition-colors">
+                <div class="space-y-1 text-center">
+                  <i class="fas fa-image text-gray-400 text-2xl"></i>
+                  <div class="flex text-sm text-gray-600">
+                    <span class="relative bg-white rounded-md font-medium text-primary-600 hover:text-primary-500">
+                      Change cover
+                    </span>
+                    <input id="cover_image" name="cover_image" type="file" class="sr-only">
+                  </div>
+                  <p class="text-xs text-gray-500">Leave empty to keep current cover</p>
+                </div>
+              </label>
+            </div>
+          </div>
+        </div>
+        
+        <div class="flex justify-end space-x-4 pt-6 border-t">
+          <button 
+            type="button" 
+            onclick="history.back()" 
+            class="px-4 py-2 border border-gray-300 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 transition-colors"
+          >
+            Cancel
+          </button>
+          <button 
+            type="submit" 
+            class="px-6 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-amber-600 hover:bg-amber-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber-500 transition-colors"
+          >
+            <i class="fas fa-save mr-2"></i>
+            Update Book
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

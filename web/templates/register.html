@@ -1,0 +1,112 @@
+{% extends 'base.html' %}
+{% block title %} Register - BookTracker {% endblock %}
+
+{% block body %}
+<div class="min-h-screen flex items-center justify-center bg-gradient-to-br from-primary-50 to-blue-100 py-12 px-4 sm:px-6 lg:px-8">
+  <div class="max-w-md w-full space-y-8">
+    <div class="text-center">
+      <i class="fas fa-book text-primary-600 text-5xl mb-4"></i>
+      <h2 class="text-3xl font-extrabold text-gray-900">Join BookTracker</h2>
+      <p class="mt-2 text-sm text-gray-600">Create your account and start tracking your reading journey</p>
+    </div>
+    
+    <div class="bg-white rounded-xl shadow-lg p-8">
+      <form class="space-y-6" action="{{url_for('auth.register')}}" method="post" enctype="multipart/form-data">
+        <div>
+          <label for="username" class="block text-sm font-medium text-gray-700">Username</label>
+          <div class="mt-1 relative">
+            <input 
+              type="text" 
+              id="username" 
+              name="username" 
+              required 
+              class="appearance-none block w-full px-3 py-2 pl-10 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:ring-primary-500 focus:border-primary-500 transition-colors"
+              placeholder="Choose a username"
+            >
+            <i class="fas fa-user absolute left-3 top-2.5 text-gray-400"></i>
+          </div>
+        </div>
+        
+        <div>
+          <label for="email" class="block text-sm font-medium text-gray-700">Email Address</label>
+          <div class="mt-1 relative">
+            <input 
+              type="email" 
+              id="email" 
+              name="email" 
+              required 
+              class="appearance-none block w-full px-3 py-2 pl-10 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:ring-primary-500 focus:border-primary-500 transition-colors"
+              placeholder="Enter your email"
+            >
+            <i class="fas fa-envelope absolute left-3 top-2.5 text-gray-400"></i>
+          </div>
+        </div>
+        
+        <div>
+          <label for="inputPassword" class="block text-sm font-medium text-gray-700">Password</label>
+          <div class="mt-1 relative">
+            <input 
+              type="password" 
+              id="inputPassword" 
+              name="password" 
+              required 
+              class="appearance-none block w-full px-3 py-2 pl-10 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:ring-primary-500 focus:border-primary-500 transition-colors"
+              placeholder="Create a password"
+            >
+            <i class="fas fa-lock absolute left-3 top-2.5 text-gray-400"></i>
+          </div>
+        </div>
+        
+        <div>
+          <label for="cover_image" class="block text-sm font-medium text-gray-700">Profile Picture</label>
+          <div class="mt-1">
+            <label class="w-full flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md cursor-pointer hover:bg-gray-50 transition-colors">
+              <div class="space-y-1 text-center">
+                <i class="fas fa-camera text-gray-400 text-3xl"></i>
+                <div class="flex text-sm text-gray-600">
+                  <span class="relative bg-white rounded-md font-medium text-primary-600 hover:text-primary-500">
+                    Upload a photo
+                  </span>
+                  <input id="cover_image" name="cover_image" type="file" class="sr-only" required>
+                </div>
+                <p class="text-xs text-gray-500">PNG, JPG, GIF up to 10MB</p>
+              </div>
+            </label>
+          </div>
+        </div>
+        
+        <div>
+          <button 
+            type="submit" 
+            class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 transition-colors"
+          >
+            <i class="fas fa-user-plus mr-2"></i>
+            Create Account
+          </button>
+        </div>
+        
+        <div class="text-center">
+          <div class="relative">
+            <div class="absolute inset-0 flex items-center">
+              <div class="w-full border-t border-gray-300"></div>
+            </div>
+            <div class="relative flex justify-center text-sm">
+              <span class="px-2 bg-white text-gray-500">Already have an account?</span>
+            </div>
+          </div>
+          
+          <div class="mt-4">
+            <a 
+              href="{{url_for('auth.login')}}" 
+              class="w-full flex justify-center py-2 px-4 border border-primary-600 text-sm font-medium rounded-md text-primary-600 bg-white hover:bg-primary-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 transition-colors"
+            >
+              <i class="fas fa-sign-in-alt mr-2"></i>
+              Sign In Instead
+            </a>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}
